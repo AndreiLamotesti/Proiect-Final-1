@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1440px, initial-scale=1.00" />
+    <title>Sport club projects</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type = "module" src = "Js/getUser.js"></script>
+    <script type = "module" src = "Js/addUser.js"></script>
+    <script type = "module" src = "Js/updateUser.js"></script>
+    <script type = "module" src = "Js/deleteUser.js"></script>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <header class="item1">
+        <h1>Sport club members</h1>
+      </header>
+        <section class="item2">
+          <div id = "labels"></div>
+          <div id = "dialogoverlay"></div>
+          <div id = "dialogbox">
+            <div>
+              <div id = "dialogboxhead"></div>
+              <div id = "dialogboxbody"></div>
+              <div id = "dialogboxfoot"></div>
+            </div>
+          </div>
+        </section>
+        <section class="item3">
+          <h3>Add new member</h3>
+          <form id = "add">
+            <div class="first-row">
+              <div class = "first-name">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name = "first-name">
+              </div>
+
+              <div class = "last-name">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name = "last-name">
+              </div>
+            </div>
+            <div class="second-row">
+              <div class = "address">
+                <label for="adress">Address</label>
+                <input type="text" id="address" name = "streetAndNumber">
+              </div>
+              <div class = "zip-code">
+                <label for="zcode">Zipcode</label>
+                <input type="text" id="zcode" name = "postalCode">
+              </div>
+              <div class = "city">
+                <label for="city">City</label>
+                <input type="text" id="city" name = "city">
+              </div>
+              <div class = "country">
+                <label for="country">Country</label>
+                <input type="text" id="country" name = "country">
+              </div>
+            </div>
+            <div class ="gender-text">Gender</div>
+            <div class="third-row">
+              <div class = "gender">
+                <select name="gender" id="input7">
+                  <option> </option>
+                  <option value="female" name="gender">female</option>
+                  <option value="male" name="gender">male</option>
+                  <option value="not-specified" name="gender">not specified</option>                              
+                </select>
+              </div>
+              <div class = "age">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age">
+              </div>
+                <div class = "activity-class">
+                  <span class ="activity-text">Activity.class</span>
+                  <div>
+                    <label for="professional">professional</label><br>
+                    <input type="radio" id="professional" name="activityClass" value="professional">
+                    <label for="amateur">amateur</label><br>  
+                    <input type="radio" id="amateur" name="activityClass" value="amateur">
+                  </div>
+                </div>
+              </div>
+              <div class="fourth-row">
+                <span class ="activity-text">Practiced-sports</span>
+
+                  <div class="checkbox">
+                    <input type="checkbox" id="running" class="checkBox" name="sports" value="running">
+                    <label for="running">running</label><br>
+                  </div>
+
+                  <div class="checkbox">
+                    <input type="checkbox" id="cycling" class="checkBox" name="sports" value="cycling">
+                    <label for="cycling">cycling</label><br>
+                  </div >
+
+                  <div class="checkbox">
+                    <input type="checkbox" id="swimming" class="checkBox" name="sports" value="swiming">
+                    <label for="swimming">swimming</label><br>
+                  </div>
+
+                  <div class="checkbox">
+                    <input type="checkbox" id="walking" class="checkBox" name="sports" value="walking">            
+                    <label for="walking">walking</label><br>
+                  </div>
+
+                  <div class="checkbox">
+                    <input type="checkbox" id="skiing" class="checkBox" name="sports" value="skiing">
+                    <label for="skiing">skiing</label><br>
+                  </div>
+              </div>
+              <button class = "save-member" type="submit" value="submit">Save</button>
+              <div id="toast-save">&#x2713; User saved successfully</div>
+            </form>
+        </section>
+    <div class="item4">
+      <h3>Edit member</h3>
+      <form id = "edit">
+        <div class="first-row">
+          <div class = "first-name">
+            <label for="fname">First Name</label>
+            <input type="text" id="u-fname" name = "first-name" >
+          </div>
+
+          <div class = "last-name">
+            <label for="lname">Last Name</label>
+            <input type="text" id="u-lname" name = "last-name">
+          </div>
+
+          <div class = "id">
+            <label for="id"></label>
+            <input style="display:none;" type="text" id="u-id" name = "id">
+          </div>
+        </div>
+
+        <div class="second-row">
+          <div class = "address">
+            <label for="u-address">Address</label>
+            <input type="text" id="u-address" name = "streetAndNumber">
+          </div>
+          <div class = "zip-code">
+            <label for="u-zcode">Zipcode</label>
+            <input type="text" id="u-zcode" name = "postalCode">
+          </div>
+          <div class = "city">
+            <label for="u-city">City</label>
+            <input type="text" id="u-city" name = "city">
+          </div>
+          <div class = "country">
+            <label for="country">Country</label>
+            <input type="text" id="u-country" name = "country">
+          </div>
+        </div>
+
+        <div class ="gender-text">Gender</div>
+        <div class="third-row">
+          <div class = "gender">
+              <select name="gender" id="u-input7">
+                <option> </option>
+                <option value="female" name="gender">female</option>
+                <option value="male" name="gender">male</option>
+                <option value="not-specified" name="gender">not specified</option>                              
+            </select>
+          </div>
+          <div class = "age">
+            <label for="age">Age</label>
+            <input type="text" id="u-age" name="age">
+          </div>
+
+          <div class = "activity-class">
+            <span class ="activity-text">Activity.class</span>
+            <div>
+              <label for="professional">professional</label><br>
+              <input type="radio" id="u-professional" name="activityClass" class="u-activityClass" value="professional">
+              <label for="amateur">amateur</label><br>  
+              <input type="radio" id="u-amateur" name="activityClass" class="u-activityClass" value="amateur">
+            </div>
+          </div>
+        </div>
+        <div class="fourth-row">
+          <span class ="activity-text">Practiced-sports</span>
+
+            <div class="u-checkbox">
+              <input type="checkbox" id="u-running" class="sports" name="sports"  value="running">
+              <label for="running">running</label><br>
+            </div>
+
+            <div class="u-checkbox">
+              <input type="checkbox" id="u-cycling" class="sports" name="sports"  value="cycling">
+              <label for="cycling">cycling</label><br>
+            </div >
+
+            <div class="u-checkbox">
+              <input type="checkbox" id="u-swimming" class="sports" name="sports"  value="swiming">
+              <label for="swimming">swimming</label><br>
+            </div>
+
+            <div class="u-checkbox">
+              <input type="checkbox" id="u-walking" class="sports" name="sports"  value="walking">            
+              <label for="walking">walking</label><br>
+            </div>
+
+            <div class="u-checkbox">
+              <input type="checkbox" id="u-skiing" class="sports" name="sports"  value="skiing">
+              <label for="skiing">skiing</label><br>
+            </div>
+        </div>
+        
+        <button  class = "update-member" type="update" value="update">Update</button>
+        <div id="toast-update">&#x2717 Error while updating member</div>
+      </form>
+    </div>
+
+      <footer class="item5">
+        <div>
+          <div>
+            <ul>
+              <li class="footer">Recent news</li>
+              <li class="footer">About Us</li>
+              <li class="footer">Services</li>
+              <li class="footer">Contact us</li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+
